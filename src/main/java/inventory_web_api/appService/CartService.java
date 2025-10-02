@@ -52,9 +52,18 @@ public class CartService {
         }
     }
 
-    public void updateCartInfo(CartDto cartDto)
+    public void updateCartInfo(CartDto cart)
     {
-       // Long id = cartDto
+        Long id = cart.id();
+        Cart carts = getCart(id);
+        if (carts !=null)
+        {
+            carts.setItemsSet(cart.itemsSet());
+            carts.setTotalExpenses(cart.totalExpenses());
+            carts.setTotalItem(cart.totalItem());
+            cartReposit.save(carts);
+        }
 
     }
+    //TODO A method that will implement multithreaded capability to be used to update cart items.
 }
