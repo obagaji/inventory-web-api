@@ -2,10 +2,7 @@ package inventory_web_api.webInEntity;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Set;
 
@@ -14,6 +11,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Getter
 @Entity
+@Builder
 public class Cart {
 
     @Id
@@ -22,7 +20,12 @@ public class Cart {
     private int totalItem;
     private double totalExpenses;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cart",orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true)
+    @JoinColumn(name = "item_id")
     private Set<Items> itemsSet;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "customer_id")
+    private Customers customers;
 
 }

@@ -36,7 +36,7 @@ public class CartController {
                 .contentType(MediaType.APPLICATION_JSON)
                 .headers(httpHeaders).body(cart);
     }
-    @GetMapping("/cart")
+    @GetMapping("/cart/{id}")
     public ResponseEntity<CartDto> getSpecificCart(@PathVariable("id") Long id)
     {
         CartDto cartDto = mapperEntityDto.mapperCartToDto(cartService.getCart(id));
@@ -55,5 +55,11 @@ public class CartController {
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(uri);
         return ResponseEntity.status(HttpStatus.OK).body(cartDtoList);
+    }
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Void> deleteCartInfo(@PathVariable("id") Long id)
+    {
+        cartService.deleteFromCart(id);
+        return ResponseEntity.ok().build();
     }
 }

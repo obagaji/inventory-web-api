@@ -2,10 +2,7 @@ package inventory_web_api.webInEntity;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Set;
 
@@ -14,6 +11,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
+@Builder
 public class Items {
 
     @Id
@@ -23,13 +21,13 @@ public class Items {
     private double itemPrice;
     private int itemAvailableQuantity;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+ /*   @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "item_id")
     Cart cart;
 
     @ManyToMany
     @JoinTable(name = "item_sale", joinColumns = @JoinColumn(name="item_id"),
             inverseJoinColumns = @JoinColumn(name = "sale_id") )
-    Set<Sales> salesSet;
+    Set<Sales> salesSet;*/
 
 }

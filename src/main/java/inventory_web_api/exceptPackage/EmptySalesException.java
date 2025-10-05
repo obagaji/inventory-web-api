@@ -11,6 +11,6 @@ public class EmptySalesException implements Supplier<Sales>
 
     @Override
     public Sales get() {
-        return new Sales(0L,0.0,0.0,null,new HashSet<>());
+        return new Sales(0L,0.0,0.0,null,null);
     }
 }

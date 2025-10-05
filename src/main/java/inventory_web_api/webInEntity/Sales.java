@@ -1,18 +1,14 @@
 package inventory_web_api.webInEntity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-import java.util.Set;
+import lombok.*;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
 @Getter
+@Builder
 public class Sales {
 
     @Id
@@ -24,6 +20,7 @@ public class Sales {
     @JoinColumn(name = "customer_id")
     private Customers customer;
 
-    @ManyToMany(mappedBy = "salesSet")
-    Set<Items> itemsSet;
+    @ManyToOne
+    @JoinColumn(name = "items_id")
+    Items items;
 }
