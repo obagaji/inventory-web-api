@@ -7,14 +7,14 @@ import java.util.Set;
 
 public record CartDto(Long id, int totalItem, double totalExpenses, Set<Items>itemsSet ,Customers customers)
 {
-  /*  public CartDto(Long id,int totalItem, double totalExpenses, Set<Items>itemsSet,Customers customers)
+    public CartDto(Long id,int totalItem, double totalExpenses, Set<Items>itemsSet,Customers customers)
     {
         this.id=id;
         this.totalItem=totalItem;
         this.totalExpenses =totalExpenses;
         this.itemsSet = Set.copyOf(itemsSet);
         this.customers = customers;
-    }*/
+    }
 }
 
 

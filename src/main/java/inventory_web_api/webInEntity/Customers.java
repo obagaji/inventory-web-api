@@ -11,7 +11,7 @@ import java.util.Set;
 @Setter
 @Getter
 @Builder
-public class Customers {
+public final class Customers {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

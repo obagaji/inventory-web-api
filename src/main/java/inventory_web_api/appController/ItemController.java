@@ -22,7 +22,7 @@ public class ItemController {
     ItemsService itemsService;
 
     @GetMapping("/item/{id}")
-    public ResponseEntity<Items>getCustomerInfo(Long id)
+    public ResponseEntity<Items>getCustomerInfo(@PathVariable("id") Long id)
     {
         Items find = itemsService.getIndividualitem(id);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().build(find);
@@ -48,14 +48,14 @@ public class ItemController {
         header.setLocation(uri);
         return ResponseEntity.ok().contentType(MediaType.APPLICATION_JSON).headers(header).body(its);
     }
-    @DeleteMapping("/item/remove")
+    @DeleteMapping("/item/remove/{id}")
     public ResponseEntity<Void>removeItem(@PathVariable("id") Long id)
     {
         itemsService.deleteItems(id);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().build().toUri();
         HttpHeaders header = new HttpHeaders();
         header.setLocation(uri);
-        return ResponseEntity.status(HttpStatusCode.valueOf(2)).build();
+        return ResponseEntity.status(HttpStatusCode.valueOf(200)).build();
     }
 
 

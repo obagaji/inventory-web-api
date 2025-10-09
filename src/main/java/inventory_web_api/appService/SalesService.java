@@ -51,9 +51,11 @@ public class SalesService {
         if ( numbers >=1 && addvalue >=1)
         {
            x= salesReposit.updateSales(numbers,addvalue,id);
+
         }
         return x;
     }
+
     public Sales updateSales(Sales sale) {
         int x = -1;
         Customers cust = new Customers();
@@ -64,9 +66,11 @@ public class SalesService {
         Optional<Items> items = itemsReposit.findById(sale.getItems().getId());
         if (!customers.isEmpty()) {
             cust = customers.get();
+            custReposit.save(cust);
         }
-        if (items.isEmpty()) {
+        if (!items.isEmpty()) {
             its = items.get();
+            itemsReposit.save(its);
         }
         Sales sales = Sales.builder()
                 .totalSale(sale.getTotalSale())

@@ -41,7 +41,7 @@ public class SalesController {
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/add").build(sale);
         HttpHeaders header = new HttpHeaders();
         header.setLocation(uri);
-        header.setContentType(MediaType.APPLICATION_JSON);
+       /// header.setContentType(MediaType.APPLICATION_JSON);
         header.setDate(Instant.now());
         return ResponseEntity.created(uri).headers(header).body(sale);
     }
